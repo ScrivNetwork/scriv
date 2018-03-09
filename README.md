@@ -22,21 +22,25 @@ copywriters, music artists, etc.
 Here is several usecases from its numerous amount:
 
 **Demonstrating data ownership without revealing actual data**
+
 Can be used in resellers’ digital goods’ markets. The costumer can always be
 sure that reseller owns the original data computing its hash in live and comparing
 with hash, provided by data manufacture.
 
 **Document timestamping**
+
 Can be used law sphere where originality of data plays core role. SCRIV
 network can all provided digital data (documents, photos, videos) was not modified
 since it’s registration date.
 
 **Checking for document integrity**
+
 Can be used in business sphere. SCRIV network will annihilate situations when
 contract was created with one conditions, but was changed and presented to signer
 with other ones.
 
 **Freeing from duplication**
+
 Everyone knows the problem of storage document duplicates on different
 storages, or even on the same storage. The usage of SCRIV blockchain in
 combination with IPFS network ensures clean, transparent and free-from-duplicates
