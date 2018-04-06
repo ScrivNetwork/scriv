@@ -1234,20 +1234,22 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     CAmount nSubsidy;
 
     if (nPrevHeight == 0)
-        nSubsidy = 24000000 * COIN; //premine 6%
+        nSubsidy = 24000000 * COIN; //premine
     else if (nPrevHeight <= 86500)
         nSubsidy = 9.6 * COIN;
-    else if (nPrevHeight <= 345600)
-        nSubsidy = 76.85 * COIN;
-    else if (nPrevHeight <= 864000)
-        nSubsidy = 57.63 * COIN;
-    else if (nPrevHeight <= 1382400)
-        nSubsidy = 43.22 * COIN;
-    else nSubsidy = 32.42 * COIN;
+    else if (nPrevHeight <= 100900)
+        nSubsidy = 17.2 * COIN;
+    else if (nPrevHeight <= 115300)
+        nSubsidy = 24.8 * COIN;
+    else if (nPrevHeight <= 129700)
+        nSubsidy = 32.4 * COIN;
+    else if (nPrevHeight <= 345700)
+        nSubsidy = 40 * COIN;
+    else nSubsidy = 32 * COIN;
 
-    // decline of production by 7.5%
-    for (int i = consensusParams.nSubsidyDecreaseInterval; i <= nPrevHeight; i += consensusParams.nSubsidyDecreaseInterval) {
-        nSubsidy -= nSubsidy/14;
+    // decline of production by 10%
+    for (int i = 691300; i <= nPrevHeight; i += consensusParams.nSubsidyDecreaseInterval) {
+        nSubsidy -= nSubsidy/10;
     }
 
     LogPrintf("height %u reward %d\n", nPrevHeight, nSubsidy);
@@ -1259,19 +1261,16 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
 
 CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
-    const int nRampPeriod = 172800;
-    const int nHeightPeriod = 259200;
-
-    if (nHeight <= nHeightPeriod)
+    if (nHeight <= 86500)
         return blockValue*50/100;
-    else if (nHeight <= nHeightPeriod + nRampPeriod)
-        return blockValue*55/100;
-    else if (nHeight <= nHeightPeriod + 2*nRampPeriod)
-        return blockValue*60/100;
-    else if (nHeight <= nHeightPeriod + 3*nRampPeriod)
-        return blockValue*65/100;
+    if (nHeight <= 100900)
+        return blockValue*45/100;
+    if (nHeight <= 115300)
+        return blockValue*40/100;
+    if (nHeight <= 129700)
+        return blockValue*35/100;
 
-    return blockValue*70/100;
+    return blockValue*30/100;
 }
 
 bool IsInitialBlockDownload()

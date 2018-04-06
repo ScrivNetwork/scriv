@@ -72,7 +72,7 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyDecreaseInterval = 1900800; // Note: actual number of blocks per 22 month
+        consensus.nSubsidyDecreaseInterval = 345600 ; // Note: actual number of blocks per 22 month
         consensus.nMasternodePaymentsStartBlock = 1; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
         consensus.nInstantSendKeepLock = 24;
         consensus.nBudgetPaymentsStartBlock = 1000000000; // disable
@@ -83,13 +83,13 @@ public:
         consensus.nSuperblockCycle = 86400; // 1 month
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
-        consensus.nMasternodeMinimumConfirmations = 15;
+        consensus.nMasternodeMinimumConfirmations = 30;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S(""); // not used
-        consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
+        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
         consensus.nPowTargetTimespan = 1 * 60 * 60; // Scriv: 1 hour
         consensus.nPowTargetSpacing = 30; // Scriv: 30 sec
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -113,10 +113,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00"); // TODO
+        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000016ec1c85230ae74"); //72700
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00"); // TODO
+        consensus.defaultAssumeValid = uint256S("0x00000000003aff05f04639ebcde4c84510310b0313ee0f2c90a5b15c20dd3bdc"); //72700
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -145,7 +145,7 @@ public:
         vSeeds.push_back(CDNSSeedData("dnsseed4.scriv.network", "dnsseed4.scriv.network"));
 
         // Scriv addresses start with 's'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,125);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 125);
         // Scriv script addresses start with '7'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,16);
         // Scriv private keys start with '7' or 'X'
@@ -171,12 +171,16 @@ public:
         strSporkPubKey = "04e439832398e01c35efe34daeb1753d16c3c43cb7bfee964320a9c9ba769f681afffd14f6c77ce32406d3bf1dce0d469c27c27ab800c86e709a5dc1049f0db0ed";
 
         checkpointData = (CCheckpointData) {
-            boost::assign::map_list_of
-            (  0, uint256S("0x00000341742751657129c08995d46795094e9e9e48ac1b0908f6ca1ffae197c7")),//TODO
-            1517608100, // * UNIX timescriv of last checkpoint block
-            0,    // * total number of transactions between genesis and last checkpoint
+            boost::assign::map_list_of            
+            (  1500, uint256S("0x00000000000571267f2146e54daccb2e1032c2c8588963f7f8a27808e4c053f4"))
+            (  5000, uint256S("0x000000000020c151a8450b1d5179f56c806a8d2c59eb7455d753cd039abbbcdc"))
+            (  9999, uint256S("0x00000000003d8f242e6407d49a475d67d6e378e6e89080a8eeff9c127445f7d6"))
+            (  15999, uint256S("0x00000000006ed041bf5d832ba5e45f35688ea69ed92e5e38924045860612e00d"))
+            (  21600, uint256S("0x000000000028a82c65bd6e2b9f0df6c36609083ff01e0c882102da50f7b7e1a6")),
+            1521372791, // * UNIX timestamp of last checkpoint block
+            24724,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            2880        // * estimated number of transactions per day after checkpoint
+            1000        // * estimated number of transactions per day after checkpoint
         };
     }
 };
@@ -206,7 +210,7 @@ public:
         consensus.nMajorityWindow = 100;
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S(""); // disable
-        consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
+        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
         consensus.nPowTargetTimespan = 1 * 60 * 60; // Scriv: 1 hour
         consensus.nPowTargetSpacing = 30; // Scriv: 30 sec
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -320,7 +324,7 @@ public:
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = -1; // BIP34 has not necessarily activated on regtest
         consensus.BIP34Hash = uint256();
-        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
         consensus.nPowTargetTimespan = 1 * 60 * 60; // Scriv: 1 hour
         consensus.nPowTargetSpacing = 30; // Scriv: 30 sec
         consensus.fPowAllowMinDifficultyBlocks = true;
