@@ -12,6 +12,17 @@ data assuring, without an attraction of third-party.
 
 For more information http://scriv.network
 
+### Specifications
+
+* Algorithm – Tribus
+* Type – PoW / Masternodes
+* Maximum Coin Supply – 145 000 000 SCRIV
+* Block Time – 30 seconds
+* Masternode Collateral – 100 000 SCRIV
+* P2P (Coin) Port – 7979
+* RPC Port – 7998
+* Transaction Confirmations – 15
+* Block Max Size – 4 MB
 
 ### Usecases
 
