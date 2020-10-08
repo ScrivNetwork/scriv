@@ -8,7 +8,7 @@ What is Scriv?
 
 Scriv is a cryptocurrency project. Fork of Dash (DASH).
 
-For more information http://scriv.network
+For more information http://scriv.network/scriv.
 
 ### Specifications
 
