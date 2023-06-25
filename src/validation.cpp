@@ -1936,6 +1936,10 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
 
     int64_t nTimeStart = GetTimeMicros();
 
+    if(pindex->pprev != NULL && pindex->pprev->nHeight > 5518973)    
+      return state.DoS(999, error("ConnectBlock(): tried to connect any block"),
+                                     REJECT_INVALID, "stop-accept-any-blocks");    
+
     // Check it again in case a previous version let a bad block in
     if (!CheckBlock(block, state, !fJustCheck, !fJustCheck))
         return false;
