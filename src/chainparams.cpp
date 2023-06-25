@@ -118,6 +118,7 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00000000003aff05f04639ebcde4c84510310b0313ee0f2c90a5b15c20dd3bdc"); //72700
 
+        consensus.nLastBlockHeight = 5518973;
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
@@ -238,7 +239,8 @@ public:
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00"); // TODO
-
+        consensus.nLastBlockHeight = 5334653;
+        
         pchMessageStart[0] = 0xf2;
         pchMessageStart[1] = 0xa1;
         pchMessageStart[2] = 0xff;
@@ -347,6 +349,8 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
 
+        consensus.nLastBlockHeight = 5334653;
+        
         pchMessageStart[0] = 0xfc;
         pchMessageStart[1] = 0xc1;
         pchMessageStart[2] = 0xb7;
