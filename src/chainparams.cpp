@@ -239,7 +239,7 @@ public:
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00"); // TODO
-        consensus.nLastBlockHeight = 5334653;
+        consensus.nLastBlockHeight = 50;
         
         pchMessageStart[0] = 0xf2;
         pchMessageStart[1] = 0xa1;
@@ -349,7 +349,7 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
 
-        consensus.nLastBlockHeight = 5334653;
+        consensus.nLastBlockHeight = 100;
         
         pchMessageStart[0] = 0xfc;
         pchMessageStart[1] = 0xc1;
